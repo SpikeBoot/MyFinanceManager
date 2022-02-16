@@ -19,7 +19,7 @@ public class UserTransaction {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    @Column(name = "category_id")
+    @JoinColumn(name = "category_id")
     private CategoryTransaction categoryTransaction;
 
     @Column(name = "description")
@@ -76,5 +76,16 @@ public class UserTransaction {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "UserTransaction{" +
+                "id=" + id +
+                ", typeTransaction=" + typeTransaction +
+                ", categoryTransaction=" + categoryTransaction +
+                ", description='" + description + '\'' +
+                ", value=" + value +
+                '}';
     }
 }

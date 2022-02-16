@@ -1,6 +1,8 @@
 package org.spikeboot.myfinancemanager.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "category_transaction")
@@ -17,12 +19,28 @@ public class CategoryTransaction {
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "categoryTransaction",
+            cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH})
+    private List<UserTransaction> userTransactions;
+
     public CategoryTransaction() {
     }
 
     public CategoryTransaction(boolean typeTransaction, String name) {
         this.typeTransaction = typeTransaction;
         this.name = name;
+    }
+
+    public void addCategoryTransactionToUserTransaction(UserTransaction userTransaction){
+        if(userTransaction == null){
+            userTransactions = new ArrayList<>();
+        }
+        userTransactions.add(userTransaction);
+        userTransaction.setCategoryTransaction(this);
     }
 
     public int getId() {
@@ -47,5 +65,14 @@ public class CategoryTransaction {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryTransaction{" +
+                "id=" + id +
+                ", typeTransaction=" + typeTransaction +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
