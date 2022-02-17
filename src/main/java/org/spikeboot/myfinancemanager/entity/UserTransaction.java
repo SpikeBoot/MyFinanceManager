@@ -31,7 +31,11 @@ public class UserTransaction {
     public UserTransaction() {
     }
 
-    public UserTransaction(boolean typeTransaction, CategoryTransaction categoryTransaction, String description, double value) {
+    public UserTransaction(boolean typeTransaction,
+                           CategoryTransaction categoryTransaction,
+                           String description,
+                           double value) {
+
         this.typeTransaction = typeTransaction;
         this.categoryTransaction = categoryTransaction;
         this.description = description;
