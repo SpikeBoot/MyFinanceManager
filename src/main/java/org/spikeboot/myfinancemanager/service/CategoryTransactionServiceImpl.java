@@ -43,6 +43,29 @@ public class CategoryTransactionServiceImpl implements CategoryTransactionServic
         return categoryTransactionDao.getCategoryTransactions();
     }
 
+    @Override
+    @Transactional
+    public List<CategoryTransaction> getProfitCategoryTransactions() {
+        List<CategoryTransaction> profitCategoryTransaction = categoryTransactionDao.getCategoryTransactions();
+        for(CategoryTransaction i: profitCategoryTransaction){
+            if(!i.getTypeTransaction()){
+                profitCategoryTransaction.remove(i);
+            }
+        }
+        return profitCategoryTransaction;
+    }
+
+    @Override
+    @Transactional
+    public List<CategoryTransaction> getSpendCategoryTransactions() {
+        List<CategoryTransaction> spendCategoryTransaction = categoryTransactionDao.getCategoryTransactions();
+        for(CategoryTransaction i: spendCategoryTransaction){
+            if(i.getTypeTransaction()){
+                spendCategoryTransaction.remove(i);
+            }
+        }
+        return spendCategoryTransaction;
+    }
 
 
     @Autowired

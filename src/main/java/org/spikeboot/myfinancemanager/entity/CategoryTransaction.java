@@ -51,7 +51,7 @@ public class CategoryTransaction {
         this.id = id;
     }
 
-    public boolean isTypeTransaction() {
+    public boolean getTypeTransaction() {
         return typeTransaction;
     }
 

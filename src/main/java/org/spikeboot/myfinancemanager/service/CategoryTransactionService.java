@@ -10,4 +10,6 @@ public interface CategoryTransactionService {
     public void removeCategoryTransaction(int id);
     public CategoryTransaction getCategoryTransactionById(int id);
     public List<CategoryTransaction> getCategoryTransactions();
+    public List<CategoryTransaction> getProfitCategoryTransactions();
+    public List<CategoryTransaction> getSpendCategoryTransactions();
 }

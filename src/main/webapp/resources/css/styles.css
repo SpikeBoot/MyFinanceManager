@@ -106,8 +106,8 @@
 /*Transaction table*/
 
 .transactionTable{
-    border-collapse: collapse;
     border: 1px solid lightgray;
+    border-collapse: collapse;
     width: 600px;
 }
 

@@ -7,7 +7,7 @@
 <br>
 <br>
 <br>
-<a href="/transactions">Category Transaction</a>
+<a href="/transactions/view">Category Transaction</a>
 
 
 </body>

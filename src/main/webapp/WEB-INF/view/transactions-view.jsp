@@ -11,7 +11,7 @@
 <%--Menu--%>
 <div class="navigationPanel">
     <p class="label">My<br>Finance<br>Manager</p>
-    <a href="/transactions" class="navigationButton">Transactions</a><br>
+    <a href="/transactions/view" class="navigationButton">Transactions</a><br>
     <a href="/" class="navigationButton">Statistic</a><br>
     <a href="/" class="navigationButton">Settings</a><br>
     <a href="/" class="navigationButton">Help</a><br>
@@ -20,7 +20,7 @@
 <div class="transactionPanel">
     <%--Panel of control--%>
     <div class="transactionControl">
-        <a href="/" class="transControlButton">Add</a>
+        <a href="/transactions/addTransaction" class="transControlButton">Add</a>
         <a href="/" class="transControlButton">Edit</a>
         <a href="/" class="transControlButton">Delete</a>
     </div>
