@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     font-family: Arial;
@@ -6,7 +6,7 @@
 
 /*Navigation Panel*/
 
-.navigationPanel{
+.navigationPanel {
     background-color: bisque;
     height: 100%;
     width: 180px;
@@ -14,21 +14,31 @@
     float: left;
 }
 
+.label{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 6px;
+    text-align: left;
+    font-family: impact, sans-serif;
+    color: #383A39;
+    letter-spacing: 0.8pt;
+    line-height: 1.2;
+}
 .navigationButton {
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-    background-color:#ffffff;
-    border-radius:6px;
-    border:1px solid #dcdcdc;
-    display:inline-block;
-    cursor:pointer;
-    color:#666666;
-    font-family:Arial;
-    font-size:18px;
-    font-weight:bold;
-    padding:6px 10px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
 
     width: 150px;
     text-align: center;
@@ -36,20 +46,89 @@
 }
 
 .navigationButton:hover {
-    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-    background-color:#f6f6f6;
+    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color: #f6f6f6;
 }
 
 .navigationButton:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
 
 /*Transaction panel*/
 
-.transactionPanel{
+.transactionPanel {
     height: 100%;
-    width: 1000px;
+    width: 600px;
     background-color: cadetblue;
     float: left;
 }
+
+.transactionControl{
+    height: 80px;
+    width: 100%;
+    padding-left: 6px;
+    padding-top: 6px;
+    background-color: red;
+}
+
+.transControlButton{
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+
+    width: 50px;
+    text-align: center;
+    margin-top: 1px;
+}
+
+.transControlButton:hover {
+    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color: #f6f6f6;
+}
+
+.transControlButton:active {
+    position: relative;
+    top: 1px;
+}
+
+/*Transaction table*/
+
+.transactionTable{
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+    width: 600px;
+}
+
+.transactionTable tr th{
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+.transactionTable tr td{
+    border: 1px solid lightgray;
+}
+
+.tdCheckbox{
+    text-align: center;
+}
+
+.tdText{
+    text-align: left;
+}
+
+.tdValue{
+    text-align: right;
+}
+

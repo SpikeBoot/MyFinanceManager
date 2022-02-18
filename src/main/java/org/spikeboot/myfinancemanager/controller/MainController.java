@@ -1,6 +1,7 @@
 package org.spikeboot.myfinancemanager.controller;
 
 import org.spikeboot.myfinancemanager.entity.CategoryTransaction;
+import org.spikeboot.myfinancemanager.entity.UserTransaction;
 import org.spikeboot.myfinancemanager.service.CategoryTransactionService;
 import org.spikeboot.myfinancemanager.service.UserTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ public class MainController {
 
     @RequestMapping("/transactions")
     public String showAllCategoryTransaction(Model model) {
-        List<CategoryTransaction> categoryTransactions = categoryTransactionService.getCategoryTransactions();
-        model.addAttribute("allCategoryTransactions", categoryTransactions);
+        List<UserTransaction> userTransactions = userTransactionService.getUserTransactions();
+
+        model.addAttribute("userTransactions", userTransactions);
 
         return "transactions";
     }

@@ -2,13 +2,14 @@ package org.spikeboot.myfinancemanager.service;
 
 import org.spikeboot.myfinancemanager.dao.UserTransactionDao;
 import org.spikeboot.myfinancemanager.entity.UserTransaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class UserTransactionServiceImpl implements UserTransactionService{
+public class UserTransactionServiceImpl implements UserTransactionService {
 
     private UserTransactionDao userTransactionDao;
 
@@ -42,7 +43,7 @@ public class UserTransactionServiceImpl implements UserTransactionService{
         return userTransactionDao.getUserTransactions();
     }
 
-
+    @Autowired
     public void setUserTransactionDao(UserTransactionDao userTransactionDao) {
         this.userTransactionDao = userTransactionDao;
     }
