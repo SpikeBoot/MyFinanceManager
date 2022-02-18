@@ -11,19 +11,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-public class MyController {
+public class MainController {
 
     private CategoryTransactionService categoryTransactionService;
     private UserTransactionService userTransactionService;
 
+    @RequestMapping("/")
+    public String startPage(){
+        return "start-page";
+    }
 
-    @RequestMapping("/show-all-category-transaction-view")
+    @RequestMapping("/transactions")
     public String showAllCategoryTransaction(Model model) {
         List<CategoryTransaction> categoryTransactions = categoryTransactionService.getCategoryTransactions();
         model.addAttribute("allCategoryTransactions", categoryTransactions);
 
-        return "show-all-category-transaction-view";
+        return "transactions";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Autowired
     public void setCategoryTransactionDao(CategoryTransactionService categoryTransactionDao) {
