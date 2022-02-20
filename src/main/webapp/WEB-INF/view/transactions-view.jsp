@@ -36,24 +36,24 @@
                 <th>Value</th>
             </tr>
             <c:if test="${!empty userTransactions}">
-                <c:forEach var="userTransaction" items="${userTransactions}">
+                <c:forEach var="var" items="${userTransactions}">
                     <c:choose>
-                        <c:when test="${userTransaction.typeTransaction == true}">
+                        <c:when test="${var.categoryTransaction.typeTransaction == true}">
                             <tr style="background-color: #C6EFCE">
-                                <td class="tdcheckbox"><input type="checkbox" name="${userTransaction.id}"></td>
-                                <td class="tdText">${userTransaction.categoryTransaction.name}</td>
-                                <td class="tdText">${userTransaction.description}</td>
+                                <td class="tdcheckbox"><input type="checkbox" name="${var.id}"></td>
+                                <td class="tdText">${var.categoryTransaction.name}</td>
+                                <td class="tdText">${var.description}</td>
                                 <td class="tdText">DATE</td>
-                                <td class="tdValue">${userTransaction.value}</td>
+                                <td class="tdValue">${var.value}</td>
                             </tr>
                         </c:when>
                         <c:otherwise>
                             <tr style="background-color: #FFC7CE">
-                                <td class="tdcheckbox"><input type="checkbox" name="${userTransaction.id}"></td>
-                                <td class="tdText">${userTransaction.categoryTransaction.name}</td>
-                                <td class="tdText">${userTransaction.description}</td>
+                                <td class="tdcheckbox"><input type="checkbox" name="${var.id}"></td>
+                                <td class="tdText">${var.categoryTransaction.name}</td>
+                                <td class="tdText">${var.description}</td>
                                 <td class="tdText">DATE</td>
-                                <td class="tdValue">${userTransaction.value}</td>
+                                <td class="tdValue">${var.value}</td>
                             </tr>
                         </c:otherwise>
                     </c:choose>

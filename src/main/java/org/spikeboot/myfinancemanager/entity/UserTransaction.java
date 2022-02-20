@@ -11,9 +11,6 @@ public class UserTransaction {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "type_transaction")
-    private boolean typeTransaction;
-
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
@@ -31,12 +28,10 @@ public class UserTransaction {
     public UserTransaction() {
     }
 
-    public UserTransaction(boolean typeTransaction,
-                           CategoryTransaction categoryTransaction,
+    public UserTransaction(CategoryTransaction categoryTransaction,
                            String description,
                            double value) {
 
-        this.typeTransaction = typeTransaction;
         this.categoryTransaction = categoryTransaction;
         this.description = description;
         this.value = value;
@@ -48,14 +43,6 @@ public class UserTransaction {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isTypeTransaction() {
-        return typeTransaction;
-    }
-
-    public void setTypeTransaction(boolean typeTransaction) {
-        this.typeTransaction = typeTransaction;
     }
 
     public CategoryTransaction getCategoryTransaction() {
@@ -86,7 +73,6 @@ public class UserTransaction {
     public String toString() {
         return "UserTransaction{" +
                 "id=" + id +
-                ", typeTransaction=" + typeTransaction +
                 ", categoryTransaction=" + categoryTransaction +
                 ", description='" + description + '\'' +
                 ", value=" + value +

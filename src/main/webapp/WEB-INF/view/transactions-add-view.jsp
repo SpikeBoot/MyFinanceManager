@@ -22,11 +22,7 @@
 
     <form:form action="/transactions/view" modelAttribute="newUserTransaction">
         <h4>Type transaction:</h4><br>
-        <form:radiobutton path="typeTransaction" value="true"/><span>Profit</span>
-        <form:radiobutton path="typeTransaction" value="false"/><span>Spend</span>
-<%--        <form:select path="categoryTransaction">--%>
-<%--            <form:options items="${profitCategoryTransactions}"/>--%>
-<%--        </form:select>--%>
+
 
     </form:form>
 </div>
