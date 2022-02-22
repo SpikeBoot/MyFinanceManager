@@ -25,6 +25,9 @@ public class UserTransaction {
     @Column(name = "value")
     private double value;
 
+    @Transient
+    private int categoryTransactionId;
+
     public UserTransaction() {
     }
 
@@ -67,6 +70,14 @@ public class UserTransaction {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public int getCategoryTransactionId() {
+        return categoryTransactionId;
+    }
+
+    public void setCategoryTransactionId(int categoryTransactionId) {
+        this.categoryTransactionId = categoryTransactionId;
     }
 
     @Override

@@ -5,7 +5,6 @@
 <head>
     <title>Add Transaction</title>
     <link href="/resources/css/styles.css" rel="stylesheet"/>
-
 </head>
 <body>
 
@@ -24,12 +23,12 @@
     <form:form action="/transactions/saveNewUserTransaction" modelAttribute="newUserTransaction">
         Choose type transaction<br>
         from his type:<br>
-        <form:select path="categoryTransaction">
+        <form:select path="categoryTransactionId">
             <optgroup label="Profit">
                 <c:forEach var="var" items="${categoryTransactions}">
                     <c:choose>
                         <c:when test="${var.typeTransaction == true}">
-                            <form:option value="${var}" label="${var.name}"/>
+                            <form:option value="${var.id}" label="${var.name}"/>
                         </c:when>
                     </c:choose>
                 </c:forEach>
@@ -38,7 +37,7 @@
                 <c:forEach var="var" items="${categoryTransactions}">
                     <c:choose>
                         <c:when test="${var.typeTransaction != true}">
-                            <form:option value="${var}" label="${var.name}"/>
+                            <form:option value="${var.id}" label="${var.name}"/>
                         </c:when>
                     </c:choose>
                 </c:forEach>

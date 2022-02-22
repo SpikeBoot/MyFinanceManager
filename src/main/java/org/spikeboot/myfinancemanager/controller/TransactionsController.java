@@ -42,14 +42,14 @@ public class TransactionsController {
 
     @RequestMapping("/saveNewUserTransaction")
     public String saveNewUserTransaction(@ModelAttribute("newUserTransaction") UserTransaction userTransaction) {
+        userTransaction.setCategoryTransaction(categoryTransactionService
+                .getCategoryTransactionById(userTransaction
+                        .getCategoryTransactionId()));
+
         userTransactionService.addUserTransaction(userTransaction);
 
         return "redirect:/transactions/view";
     }
-
-
-
-
 
 
 
