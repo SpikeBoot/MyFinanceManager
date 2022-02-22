@@ -1,13 +1,14 @@
 package org.spikeboot.myfinancemanager.controller;
 
-import org.spikeboot.myfinancemanager.entity.CategoryTransaction;
 import org.spikeboot.myfinancemanager.entity.UserTransaction;
 import org.spikeboot.myfinancemanager.service.CategoryTransactionService;
 import org.spikeboot.myfinancemanager.service.UserTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,20 +32,20 @@ public class TransactionsController {
     }
 
     @RequestMapping("/addTransaction")
-    public String addNewTransaction(Model model){
-        model.addAttribute("newUserTransaction", new UserTransaction());
+    public String addNewUserTransaction(Model model) {
+        UserTransaction userTransaction = new UserTransaction();
+        model.addAttribute("newUserTransaction", userTransaction);
 
+        model.addAttribute("categoryTransactions", categoryTransactionService.getCategoryTransactions());
         return "transactions-add-view";
     }
 
+    @RequestMapping("/saveNewUserTransaction")
+    public String saveNewUserTransaction(@ModelAttribute("newUserTransaction") UserTransaction userTransaction) {
+        userTransactionService.addUserTransaction(userTransaction);
 
-
-
-
-
-
-
-
+        return "redirect:/transactions/view";
+    }
 
 
 
