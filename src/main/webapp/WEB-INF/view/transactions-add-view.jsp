@@ -5,6 +5,7 @@
 <head>
     <title>Add Transaction</title>
     <link href="/resources/css/styles.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
 <%--Panel of adding transaction--%>
 <div class="addPanel">
 
-    <form:form action="/transactions/saveNewUserTransaction" modelAttribute="newUserTransaction">
+    <form:form action="/transactions/saveNewUserTransaction" modelAttribute="newUserTransaction" method="post">
         Choose type transaction<br>
         from his type:<br>
         <form:select path="categoryTransactionId">
@@ -46,7 +47,7 @@
         <br>
         Description:
         <br>
-        <form:textarea path="description"/>
+        <form:input path="description"/>
         <br>
         Value:
         <br>

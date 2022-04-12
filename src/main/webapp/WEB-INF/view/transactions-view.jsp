@@ -5,6 +5,7 @@
 <head>
     <title>My Transactions</title>
     <link href="/resources/css/styles.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 
@@ -57,7 +58,8 @@
                             </tr>
                         </c:otherwise>
                     </c:choose>
-                </c:forEach></c:if>
+                </c:forEach>
+            </c:if>
         </table>
     </div>
 </div>
