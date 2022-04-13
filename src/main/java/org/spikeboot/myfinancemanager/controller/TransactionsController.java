@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,25 +32,44 @@ public class TransactionsController {
     @RequestMapping("/addTransaction")
     public String addNewUserTransaction(Model model) {
         UserTransaction userTransaction = new UserTransaction();
-        model.addAttribute("newUserTransaction", userTransaction);
+        model.addAttribute("userTransaction", userTransaction);
 
         model.addAttribute("categoryTransactions", categoryTransactionService.getCategoryTransactions());
-        return "transactions-add-view";
+        return "transactions-info-view";
     }
 
-    @RequestMapping("/saveNewUserTransaction")
-    public String saveNewUserTransaction(@ModelAttribute("newUserTransaction") UserTransaction userTransaction) {
+    @RequestMapping("/saveUserTransaction")
+    public String saveUserTransaction(@ModelAttribute("userTransaction") UserTransaction userTransaction) {
         userTransaction.setCategoryTransaction(categoryTransactionService
                 .getCategoryTransactionById(userTransaction
                         .getCategoryTransactionId()));
 
-        userTransactionService.addUserTransaction(userTransaction);
+        if(userTransaction.getId() != 0){
+            userTransactionService.updateUserTransaction(userTransaction);
+        } else {
+            userTransactionService.addUserTransaction(userTransaction);
+        }
 
         return "redirect:/transactions/view";
     }
 
+    @RequestMapping("/updateTransaction")
+    public String updateTransaction(@RequestParam("transactionId") int id, Model model){
+        UserTransaction userTransaction = userTransactionService.getUserTransactionById(id);
+        userTransaction.setCategoryTransactionId(userTransaction.getCategoryTransaction().getId());
 
+        model.addAttribute("userTransaction", userTransaction);
+        model.addAttribute("categoryTransactions", categoryTransactionService.getCategoryTransactions());
 
+        return "transactions-info-view";
+    }
+
+    @RequestMapping("/deleteTransaction")
+    public String deleteTransaction(@RequestParam("transactionId") int id){
+        userTransactionService.removeUserTransaction(id);
+
+        return "redirect:/transactions/view";
+    }
 
     @Autowired
     public void setCategoryTransactionDao(CategoryTransactionService categoryTransactionDao) {

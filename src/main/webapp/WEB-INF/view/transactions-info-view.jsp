@@ -21,7 +21,10 @@
 <%--Panel of adding transaction--%>
 <div class="addPanel">
 
-    <form:form action="/transactions/saveNewUserTransaction" modelAttribute="newUserTransaction" method="post">
+    <form:form action="/transactions/saveUserTransaction" modelAttribute="userTransaction" method="post">
+
+        <form:hidden path="id"/>
+
         Choose type transaction<br>
         from his type:<br>
         <form:select path="categoryTransactionId">
@@ -45,15 +48,18 @@
             </optgroup>
         </form:select>
         <br>
+
         Description:
         <br>
         <form:input path="description"/>
         <br>
+
         Value:
         <br>
         <form:input path="value"/>
         <br>
-        <input type="submit" value="Add">
+
+        <input type="submit" value="Save">
         <input type="reset" value="Reset">
     </form:form>
 </div>

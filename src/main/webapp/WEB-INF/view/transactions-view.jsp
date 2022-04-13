@@ -40,8 +40,20 @@
                 <c:forEach var="var" items="${userTransactions}">
                     <c:choose>
                         <c:when test="${var.categoryTransaction.typeTransaction == true}">
+
+                            <c:url var="updateButton" value="/transactions/updateTransaction">
+                                <c:param name="transactionId" value="${var.id}"/>
+                            </c:url>
+
+                            <c:url var="deleteButton" value="/transactions/deleteTransaction">
+                                <c:param name="transactionId" value="${var.id}"/>
+                            </c:url>
+
                             <tr style="background-color: #C6EFCE">
-                                <td class="tdcheckbox"><input type="checkbox" name="${var.id}"></td>
+                                <td>
+                                    <a href="${updateButton}" class="manipulationButton">Update</a>
+                                    <a href="${deleteButton}" class="manipulationButton">Delete</a>
+                                </td>
                                 <td class="tdText">${var.categoryTransaction.name}</td>
                                 <td class="tdText">${var.description}</td>
                                 <td class="tdText">DATE</td>
@@ -49,8 +61,20 @@
                             </tr>
                         </c:when>
                         <c:otherwise>
+
+                            <c:url var="updateButton" value="/transactions/updateTransaction">
+                                <c:param name="transactionId" value="${var.id}"/>
+                            </c:url>
+
+                            <c:url var="deleteButton" value="/transactions/deleteTransaction">
+                                <c:param name="transactionId" value="${var.id}"/>
+                            </c:url>
+
                             <tr style="background-color: #FFC7CE">
-                                <td class="tdcheckbox"><input type="checkbox" name="${var.id}"></td>
+                                <td>
+                                    <a href="${updateButton}" class="manipulationButton">Update</a>
+                                    <a href="${deleteButton}" class="manipulationButton">Delete</a>
+                                </td>
                                 <td class="tdText">${var.categoryTransaction.name}</td>
                                 <td class="tdText">${var.description}</td>
                                 <td class="tdText">DATE</td>
