@@ -1,6 +1,7 @@
 package org.spikeboot.myfinancemanager.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_transaction")
@@ -24,6 +25,12 @@ public class UserTransaction {
 
     @Column(name = "value")
     private double value;
+
+    /**
+     * categoryTransactionId
+     * This field uses in controller for add instance in field CategoryTransaction for this class
+     * And not use in CRUD operations
+     */
 
     @Transient
     private int categoryTransactionId;
@@ -88,5 +95,21 @@ public class UserTransaction {
                 ", description='" + description + '\'' +
                 ", value=" + value +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserTransaction that = (UserTransaction) o;
+        return id == that.id &&
+                Double.compare(that.value, value) == 0 &&
+                Objects.equals(categoryTransaction, that.categoryTransaction) &&
+                Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, categoryTransaction, description, value);
     }
 }

@@ -6,9 +6,18 @@ import org.spikeboot.myfinancemanager.entity.UserTransaction;
 import java.util.List;
 
 public interface CategoryTransactionDao {
+
+    /**
+     * DAO interface for CategoryTransaction
+     */
+
     public void addCategoryTransaction(CategoryTransaction categoryTransaction);
+
     public void updateCategoryTransaction(CategoryTransaction categoryTransaction);
+
     public void removeCategoryTransaction(int id);
+
     public CategoryTransaction getCategoryTransactionById(int id);
+
     public List<CategoryTransaction> getCategoryTransactions();
 }

@@ -19,6 +19,10 @@ public class TransactionsController {
     private CategoryTransactionService categoryTransactionService;
     private UserTransactionService userTransactionService;
 
+    /**
+     * showAllCategoryTransaction
+     * This mapping use for visual representation all users transaction
+     */
 
     @RequestMapping("/view")
     public String showAllCategoryTransaction(Model model) {
@@ -29,6 +33,12 @@ public class TransactionsController {
         return "transactions-view";
     }
 
+    /**
+     * addNewUserTransaction
+     * This mapping use for create new transaction and
+     * use same view 'transactions-info-view' with updateTransaction mapping
+     */
+
     @RequestMapping("/addTransaction")
     public String addNewUserTransaction(Model model) {
         UserTransaction userTransaction = new UserTransaction();
@@ -38,23 +48,8 @@ public class TransactionsController {
         return "transactions-info-view";
     }
 
-    @RequestMapping("/saveUserTransaction")
-    public String saveUserTransaction(@ModelAttribute("userTransaction") UserTransaction userTransaction) {
-        userTransaction.setCategoryTransaction(categoryTransactionService
-                .getCategoryTransactionById(userTransaction
-                        .getCategoryTransactionId()));
-
-        if(userTransaction.getId() != 0){
-            userTransactionService.updateUserTransaction(userTransaction);
-        } else {
-            userTransactionService.addUserTransaction(userTransaction);
-        }
-
-        return "redirect:/transactions/view";
-    }
-
     @RequestMapping("/updateTransaction")
-    public String updateTransaction(@RequestParam("transactionId") int id, Model model){
+    public String updateTransaction(@RequestParam("transactionId") int id, Model model) {
         UserTransaction userTransaction = userTransactionService.getUserTransactionById(id);
         userTransaction.setCategoryTransactionId(userTransaction.getCategoryTransaction().getId());
 
@@ -64,8 +59,34 @@ public class TransactionsController {
         return "transactions-info-view";
     }
 
+    /**
+     * saveUserTransaction
+     * This mapping get transaction from transactions-info-view.
+     * If transaction is present in DataBase - update him, or create new instance.
+     * */
+
+    @RequestMapping("/saveUserTransaction")
+    public String saveUserTransaction(@ModelAttribute("userTransaction") UserTransaction userTransaction) {
+        userTransaction.setCategoryTransaction(categoryTransactionService
+                .getCategoryTransactionById(userTransaction
+                        .getCategoryTransactionId()));
+
+        if (userTransaction.getId() != 0) {
+            userTransactionService.updateUserTransaction(userTransaction);
+        } else {
+            userTransactionService.addUserTransaction(userTransaction);
+        }
+
+        return "redirect:/transactions/view";
+    }
+
+    /**
+     * deleteTransaction
+     * This mapping use for delete instance transaction from database
+     * */
+
     @RequestMapping("/deleteTransaction")
-    public String deleteTransaction(@RequestParam("transactionId") int id){
+    public String deleteTransaction(@RequestParam("transactionId") int id) {
         userTransactionService.removeUserTransaction(id);
 
         return "redirect:/transactions/view";

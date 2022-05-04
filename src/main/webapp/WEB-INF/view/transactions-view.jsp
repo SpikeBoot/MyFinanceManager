@@ -22,8 +22,6 @@
     <%--Panel of control--%>
     <div class="transactionControl">
         <a href="/transactions/addTransaction" class="transControlButton">Add</a>
-        <a href="/" class="transControlButton">Edit</a>
-        <a href="/" class="transControlButton">Delete</a>
     </div>
 
     <%--Transaction table--%>
