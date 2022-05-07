@@ -2,11 +2,16 @@ package org.spikeboot.myfinancemanager.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.spikeboot.myfinancemanager.entity.CategoryTransaction;
 import org.spikeboot.myfinancemanager.entity.UserTransaction;
+import org.spikeboot.myfinancemanager.service.CategoryTransactionService;
+import org.spikeboot.myfinancemanager.service.CategoryTransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.object.SqlQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
